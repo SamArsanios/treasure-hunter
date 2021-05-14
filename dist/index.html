@@ -2,14 +2,98 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.54.0/dist/phaser-arcade-physics.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
-
+  <div id="game"></div>
+  man
 </body>
+<script>
+  const phaserConfig = {
+    type: Phaser.AUTO,
+    parent: "game",
+    width: 1280,
+    height: 600,
+    backgroundColor: "#5DACD8",
+    scene: {
+      init: initScene,
+      preload: preloadScene,
+      create: createScene,
+      update: updateScene
+    }
+  };
+
+  const game = new Phaser.Game(phaserConfig)
+
+  var cloudsWhite;
+  var cloudsWhiteSmall;
+  var plane;
+  // var explosion;
+
+  var isClicked = false;
+
+  function initScene() {
+
+  }
+
+  function preloadScene() {
+    this.load.image("clouds-blue", "blue.png");
+    this.load.image("clouds-white", "white-clouds-1.png");
+    this.load.image("clouds-white-small", "white-clouds-small.png");
+    this.load.spritesheet("plane", "plane.png", { frameWidth: 512, frameHeight: 512 });
+    this.load.spritesheet("explosion", "explosion.png", { frameWidth: 512, frameHeight: 512 });
+  }
+
+  function createScene() {
+    var cloudsBlue = this.add.sprite(640, 360, "clouds-blue");
+    cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
+    cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
+
+    this.anims.create({
+      key: "fly",
+      frameRate: 7,
+      frames: this.anims.generateFrameNumbers("plane"),
+      repeat: -1
+    });
+    this.anims.create({
+      key: "explode",
+      frameRate: 7,
+      frames: this.anims.generateFrameNumbers("explosion"),
+      repeat: 2
+    });
+    plane = this.add.sprite(100, 512, "plane");
+    plane.setScale(0.25);
+    plane.play("fly");
+
+
+  }
+
+  function updateScene() {
+    cloudsWhite.tilePositionX += 0.5;
+    cloudsWhiteSmall.tilePositionX += 0.25;
+
+    if (this.input.activePointer.isDown) {
+      isClicked = true;
+    } else if (!this.input.activePointer.isDown && isClicked) {
+      isClicked = false;
+      var explosion = this.add.sprite(
+        this.input.activePointer.position.x,
+        this.input.activePointer.position.y,
+        "explosion"
+      );
+      explosion.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+        explosion.destroy();
+      });
+      explosion.setScale(0.2);
+      explosion.play("explode");
+    }
+  }
+
+</script>
 
 </html>
