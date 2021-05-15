@@ -20,6 +20,12 @@
     width: 1280,
     height: 600,
     backgroundColor: "#5DACD8",
+    physics: {
+      default: "arcade",
+      arcade: {
+        debug: true
+      }
+    },
     scene: {
       init: initScene,
       preload: preloadScene,
@@ -30,10 +36,14 @@
 
   const game = new Phaser.Game(phaserConfig)
 
+  var cloudsBlue
   var cloudsWhite;
   var cloudsWhiteSmall;
   var plane;
   // var explosion;
+  var coin;
+  var obstacle;
+  var isGameOver = false;
 
   var isClicked = false;
 
@@ -45,20 +55,41 @@
     this.load.image("clouds-blue", "blue.png");
     this.load.image("clouds-white", "white-clouds-1.png");
     this.load.image("clouds-white-small", "white-clouds-small.png");
-    this.load.spritesheet("plane", "plane.png", { frameWidth: 512, frameHeight: 512 });
+    this.load.atlas("plane", "plane.png", "plane.json")
+    // this.load.spritesheet("plane", "plane.png", { frameWidth: 512, frameHeight: 512 });
     this.load.spritesheet("explosion", "explosion.png", { frameWidth: 512, frameHeight: 512 });
+    this.load.image("coin", "coin.png");
+    this.load.image("obstacle", "obstacle.png");
   }
 
   function createScene() {
-    var cloudsBlue = this.add.sprite(640, 360, "clouds-blue");
+    cloudsBlue = this.add.image(640, 360, "clouds-blue");
     cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
     cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
 
     this.anims.create({
       key: "fly",
       frameRate: 7,
-      frames: this.anims.generateFrameNumbers("plane"),
+      frames: this.anims.generateFrameNames("plane", {
+        prefix: "plane-",
+        suffix: ".png",
+        start: 1,
+        end: 4,
+        zeroPad: 1
+      }),
       repeat: -1
+    });
+    this.anims.create({
+      key: "explosion",
+      frameRate: 7,
+      frames: this.anims.generateFrameNames("plane", {
+        prefix: "smoke-",
+        suffix: ".png",
+        start: 1,
+        end: 4,
+        zeroPad: 1
+      }),
+      repeat: 2
     });
     this.anims.create({
       key: "explode",
@@ -66,9 +97,33 @@
       frames: this.anims.generateFrameNumbers("explosion"),
       repeat: 2
     });
-    plane = this.add.sprite(100, 512, "plane");
+    plane = this.physics.add.sprite(100, 512, "plane");
+    plane.setDepth(1);
     plane.setScale(0.25);
     plane.play("fly");
+
+    coin = this.physics.add.sprite(500, 512, "coin");
+    coin.setScale(0.15);
+    coin.setCircle(250);
+
+    obstacle = this.physics.add.sprite(900, 512, "obstacle");
+    obstacle.setScale(0.3);
+
+    this.physics.add.collider(plane, coin, function (plane, coin) {
+      coin.x = 1400;
+      // plane.play("explosion");
+    });
+
+    this.physics.add.collider(plane, obstacle, function (plane, obstacle) {
+      if (!isGameOver) {
+        plane.play("explosion");
+        plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+          plane.destroy();
+        });
+        isGameOver = true;
+      }
+
+    });
 
 
   }
@@ -76,6 +131,8 @@
   function updateScene() {
     cloudsWhite.tilePositionX += 0.5;
     cloudsWhiteSmall.tilePositionX += 0.25;
+    coin.x -= 4;
+    obstacle.x -= 3;
 
     if (this.input.activePointer.isDown) {
       isClicked = true;
