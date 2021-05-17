@@ -122,10 +122,18 @@
       maxSize: 10,
       visible: false,
       active: false
-    })
+    });
 
-    obstacle = this.physics.add.sprite(900, 512, "obstacle");
-    obstacle.setScale(0.3);
+    // obstacle = this.physics.add.sprite(900, 512, "obstacle");
+    // obstacle.setScale(0.3);
+
+
+    coinGroup = this.physics.add.group({
+      defaultKey: "coin",
+      maxSize: 10,
+      visible: false,
+      active: false
+    });
 
     this.time.addEvent({
       delay: 1000,
