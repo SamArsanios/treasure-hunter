@@ -14,6 +14,7 @@
   <div id="game"></div>
   man
 </body>
+<script src="./main.js"></script>
 <script>
   const phaserConfig = {
     type: Phaser.AUTO,
@@ -24,7 +25,7 @@
     physics: {
       default: "arcade",
       arcade: {
-        debug: true
+        debug: false
       }
     },
     scene: {
@@ -41,13 +42,11 @@
   var cloudsWhite;
   var cloudsWhiteSmall;
   var plane;
-  // var coin;
   var coinGroup;
-  var obstacle;
-  var isGameOver = false;
-  var isClicked = false;
+  var obstacleGroup;
   var scoreText;
   var positionsY = [125, 300, 475];
+  var isCoinPoolItem = true;
 
   function initScene() {
 
@@ -79,6 +78,7 @@
         // padding: (-100, 1)
       }
     );
+    scoreText.setDepth(1);
 
     this.anims.create({
       key: "fly",
@@ -128,8 +128,8 @@
     // obstacle.setScale(0.3);
 
 
-    coinGroup = this.physics.add.group({
-      defaultKey: "coin",
+    obstacleGroup = this.physics.add.group({
+      defaultKey: "obstacle",
       maxSize: 10,
       visible: false,
       active: false
@@ -139,23 +139,27 @@
       delay: 1000,
       loop: true,
       callback: () => {
-        coinGroup.get(1300, 512).setActive(true).setVisible(true).setScale(0.15);
-      }
-    })
+        let coinPosition = Math.floor(Math.random() * 3);
 
-    // this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-    //   if ((bodyA.label == "plane" && bodyB.label == "coin") || (bodyB.label == "plane" && bodyA.label == "coin")) {
-    //     coin.x = 1400;
-    //   } else if ((bodyA.label == "plane" && bodyB.label == "obstacle") || (bodyB.label == "plane" && bodyA.label == "obstacle")) {
-    //     if (!isGameOver) {
-    //       plane.play("explosion");
-    //       plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-    //         plane.destroy();
-    //       });
-    //       isGameOver = true;
-    //     }
-    //   }
-    // });
+
+        if (isCoinPoolItem) {
+          coinGroup.get(1300, positionsY[coinPosition])
+            .setActive(true)
+            .setVisible(true)
+            .setScale(0.15);
+        } else {
+          let obstacleCount = Math.floor(Math.random() * 2) + 1;
+          for (let i = 0; i < obstacleCount; i++) {
+            let obstaclePosition = Math.floor(Math.random() * 3);
+            obstacleGroup.get(1300, positionsY[obstaclePosition])
+              .setActive(true)
+              .setVisible(true)
+              .setScale(0.3);
+          }
+        }
+        isCoinPoolItem = !isCoinPoolItem
+      }
+    });
 
     this.physics.add.collider(plane, coinGroup, function (plane, coin) {
       // coin.x = 1400;
@@ -168,15 +172,15 @@
       }
     });
 
-    this.physics.add.collider(plane, obstacle, function (plane, obstacle) {
-      if (!isGameOver) {
+    this.physics.add.collider(plane, obstacleGroup, function (plane, obstacle) {
+      if (plane.anims.getName() != "explosion") {
         plane.play("explosion");
         plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
           plane.destroy();
+          this.scene.restart();
         });
-        isGameOver = true;
       }
-    });
+    }, null, this);
   }
 
   function updateScene() {
@@ -184,11 +188,18 @@
     cloudsWhiteSmall.tilePositionX += 0.25;
     // coin.x -= 4;
     coinGroup.incX(-4);
-    obstacle.x -= 3;
+    // obstacle.x -= 3;
+    obstacleGroup.incX(-4);
 
     coinGroup.getChildren().forEach(coin => {
       if (coin.active && coin.x < 0) {
         coinGroup.killAndHide(coin);
+      }
+    });
+
+    obstacleGroup.getChildren().forEach(obstacle => {
+      if (obstacle.active && obstacle.x < 0) {
+        obstacleGroup.killAndHide(obstacle);
       }
     });
 
