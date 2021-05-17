@@ -45,10 +45,10 @@
   var coinGroup;
   var obstacle;
   var isGameOver = false;
-
   var isClicked = false;
-
   var scoreText;
+  var positionsY = [125, 300, 475];
+
   function initScene() {
 
   }
@@ -107,10 +107,11 @@
 
     var sprites = this.cache.json.get("sprites");
 
-    plane = this.physics.add.sprite(100, 512, "plane");
+    plane = this.physics.add.sprite(100, 300, "plane");
     plane.setDepth(1);
     plane.setScale(0.25);
     plane.setData("score", 0);
+    plane.setData("position", 1);
     plane.play("fly");
 
     // coin = this.physics.add.sprite(500, 512, "coin");
@@ -130,7 +131,7 @@
       delay: 1000,
       loop: true,
       callback: () => {
-        coinGroup.get(500, 512).setActive(true).setVisible(true).setScale(0.15);
+        coinGroup.get(1300, 512).setActive(true).setVisible(true).setScale(0.15);
       }
     })
 
@@ -150,7 +151,7 @@
 
     this.physics.add.collider(plane, coinGroup, function (plane, coin) {
       // coin.x = 1400;
-      if (coin.active) {
+      if (coin.active && plane.anims.getName() != "explosion") {
         coinGroup.killAndHide(coin);
         let score = plane.getData("score");
         score++;
@@ -182,6 +183,35 @@
         coinGroup.killAndHide(coin);
       }
     });
+
+    if (this.input.activePointer.isDown) {
+      let position = this.input.activePointer.position;
+      let distancesY = positionsY.map(positionY => {
+        return Math.abs(positionY - position.y);
+      });
+      console.log(distancesY);
+
+      let smallestArrayValue = function (array) {
+        let index = 0, value = 999999
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] < value) {
+            value = array[i];
+            index = i
+          }
+        }
+        return index;
+      };
+      plane.setData("position", smallestArrayValue(distancesY));
+    }
+
+    if (plane.y > positionsY[plane.getData("position")]) {
+      plane.y -= 6;
+    } else if (plane.y < positionsY[plane.getData("position")]) {
+      plane.y += 6;
+    }
+    if (Math.abs(plane.y - positionsY[plane.getData("position")]) <= 10) {
+      plane.y = positionsY[plane.getData("position")];
+    }
   }
 
 </script>
