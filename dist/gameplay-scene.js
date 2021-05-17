@@ -10,13 +10,13 @@
 //   },
 
 //   preload: function () {
-//     this.load.image("clouds-blue", "assets/blue.png");
-//     this.load.image("clouds-white", "assets/white-clouds-1.png");
-//     this.load.image("clouds-white-small", "assets/white-clouds-small.png");
-//     this.load.atlas("plane", "assets/plane.png", "assets/plane.json");
+//     this.load.image("clouds-blue", "..src/assets/blue.png");
+//     this.load.image("clouds-white", "..src/assets/white-clouds-1.png");
+//     this.load.image("clouds-white-small", "..src/assets/white-clouds-small.png");
+//     this.load.atlas("plane", "..src/assets/plane.png", "..src/assets/plane.json");
 //     // this.load.json("sprites", "./assets/sprite-physics.json");
-//     this.load.image("coin", "assets/coin.png");
-//     this.load.image("obstacle", "assets/obstacle.png");
+//     this.load.image("coin", "..src/assets/coin.png");
+//     this.load.image("obstacle", "..src/assets/obstacle.png");
 //   },
 
 
