@@ -22,8 +22,11 @@
     height: 600,
     backgroundColor: "#5DACD8",
     physics: {
-      default: "arcade",
+      default: "matter",
       arcade: {
+        debug: true
+      },
+      matter: {
         debug: true
       }
     },
@@ -56,9 +59,10 @@
     this.load.image("clouds-blue", "blue.png");
     this.load.image("clouds-white", "white-clouds-1.png");
     this.load.image("clouds-white-small", "white-clouds-small.png");
-    this.load.atlas("plane", "plane.png", "plane.json")
+    this.load.atlas("plane", "plane.png", "plane.json");
+    this.load.json("sprites", "sprite-physics.json");
     // this.load.spritesheet("plane", "plane.png", { frameWidth: 512, frameHeight: 512 });
-    this.load.spritesheet("explosion", "explosion.png", { frameWidth: 512, frameHeight: 512 });
+    // this.load.spritesheet("explosion", "explosion.png", { frameWidth: 512, frameHeight: 512 });
     this.load.image("coin", "coin.png");
     this.load.image("obstacle", "obstacle.png");
   }
@@ -98,35 +102,40 @@
       frames: this.anims.generateFrameNumbers("explosion"),
       repeat: 2
     });
-    plane = this.physics.add.sprite(100, 512, "plane");
+    var sprites = this.cache.json.get("sprites");
+
+    // plane = this.physics.add.sprite(100, 512, "plane");
+    plane = this.matter.add.sprite(100, 512, "plane", "plane-1.png", { shape: sprites.plane });
+    plane.setIgnoreGravity(true);
     plane.setDepth(1);
     plane.setScale(0.25);
     plane.play("fly");
 
-    coin = this.physics.add.sprite(500, 512, "coin");
+    // coin = this.physics.add.sprite(500, 512, "coin");
+    coin = this.matter.add.sprite(500, 512, "coin", null, { shape: sprites.coin });
+    coin.setIgnoreGravity(true);
     coin.setScale(0.15);
-    coin.setCircle(250);
+    // coin.setCircle(250);
 
-    obstacle = this.physics.add.sprite(900, 512, "obstacle");
+    // obstacle = this.physics.add.sprite(900, 512, "obstacle");
+    obstacle = this.matter.add.sprite(900, 512, "obstacle", null, { shape: sprites.obstacle });
+    obstacle.setIgnoreGravity(true);
     obstacle.setScale(0.3);
 
-    this.physics.add.collider(plane, coin, function (plane, coin) {
-      coin.x = 1400;
-      // plane.play("explosion");
-    });
+    // this.physics.add.collider(plane, coin, function (plane, coin) {
+    //   coin.x = 1400;
+    //   // plane.play("explosion");
+    // });
 
-    this.physics.add.collider(plane, obstacle, function (plane, obstacle) {
-      if (!isGameOver) {
-        plane.play("explosion");
-        plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-          plane.destroy();
-        });
-        isGameOver = true;
-      }
-
-    });
-
-
+    // this.physics.add.collider(plane, obstacle, function (plane, obstacle) {
+    //   if (!isGameOver) {
+    //     plane.play("explosion");
+    //     plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+    //       plane.destroy();
+    //     });
+    //     isGameOver = true;
+    //   }
+    // });
   }
 
   function updateScene() {
@@ -135,21 +144,21 @@
     coin.x -= 4;
     obstacle.x -= 3;
 
-    if (this.input.activePointer.isDown) {
-      isClicked = true;
-    } else if (!this.input.activePointer.isDown && isClicked) {
-      isClicked = false;
-      var explosion = this.add.sprite(
-        this.input.activePointer.position.x,
-        this.input.activePointer.position.y,
-        "explosion"
-      );
-      explosion.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        explosion.destroy();
-      });
-      explosion.setScale(0.2);
-      explosion.play("explode");
-    }
+    // if (this.input.activePointer.isDown) {
+    //   isClicked = true;
+    // } else if (!this.input.activePointer.isDown && isClicked) {
+    //   isClicked = false;
+    //   var explosion = this.add.sprite(
+    //     this.input.activePointer.position.x,
+    //     this.input.activePointer.position.y,
+    //     "explosion"
+    //   );
+    //   explosion.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+    //     explosion.destroy();
+    //   });
+    //   explosion.setScale(0.2);
+    //   explosion.play("explode");
+    // }
   }
 
 </script>
