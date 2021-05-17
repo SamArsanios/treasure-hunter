@@ -11,13 +11,13 @@
 		"frictionStatic": 0.5,
 		"collisionFilter": {
 			"group": 0,
-			"category": 4,
+			"category": 5,
 			"mask": 5
 		},
 		"fixtures": [
 			{
 				"label": "coin",
-				"isSensor": false,
+				"isSensor": true,
 				"circle": {
 					"x": 255.00255002550026,
 					"y": 256.9974499744998,
@@ -43,7 +43,7 @@
 		"fixtures": [
 			{
 				"label": "obstacle",
-				"isSensor": false,
+				"isSensor": true,
 				"vertices": [
 					[ { "x":13, "y":256 }, { "x":43, "y":256 }, { "x":82, "y":189 }, { "x":88, "y":160 }, { "x":88, "y":155 }, { "x":60, "y":155 }, { "x":13, "y":246 } ],
 					[ { "x":72, "y":4 }, { "x":36, "y":4 }, { "x":13, "y":246 }, { "x":60, "y":155 } ],
@@ -74,7 +74,7 @@
 		"fixtures": [
 			{
 				"label": "plane",
-				"isSensor": false,
+				"isSensor": true,
 				"vertices": [
 					[ { "x":134, "y":145 }, { "x":132, "y":145 }, { "x":109, "y":206 }, { "x":112, "y":211 }, { "x":134, "y":147 } ],
 					[ { "x":86, "y":164 }, { "x":88, "y":166 }, { "x":132, "y":145 }, { "x":126, "y":139 }, { "x":87, "y":162 } ],
