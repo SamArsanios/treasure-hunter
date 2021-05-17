@@ -22,11 +22,8 @@
     height: 600,
     backgroundColor: "#5DACD8",
     physics: {
-      default: "matter",
+      default: "arcade",
       arcade: {
-        debug: true
-      },
-      matter: {
         debug: true
       }
     },
@@ -44,33 +41,44 @@
   var cloudsWhite;
   var cloudsWhiteSmall;
   var plane;
-  // var explosion;
-  var coin;
+  // var coin;
+  var coinGroup;
   var obstacle;
   var isGameOver = false;
 
   var isClicked = false;
 
+  var scoreText;
   function initScene() {
 
   }
 
   function preloadScene() {
-    this.load.image("clouds-blue", "blue.png");
-    this.load.image("clouds-white", "white-clouds-1.png");
-    this.load.image("clouds-white-small", "white-clouds-small.png");
-    this.load.atlas("plane", "plane.png", "plane.json");
-    this.load.json("sprites", "sprite-physics.json");
-    // this.load.spritesheet("plane", "plane.png", { frameWidth: 512, frameHeight: 512 });
-    // this.load.spritesheet("explosion", "explosion.png", { frameWidth: 512, frameHeight: 512 });
-    this.load.image("coin", "coin.png");
-    this.load.image("obstacle", "obstacle.png");
+    this.load.image("clouds-blue", "../src/assets/blue.png");
+    this.load.image("clouds-white", "../src/assets/white-clouds-1.png");
+    this.load.image("clouds-white-small", "../src/assets/white-clouds-small.png");
+    this.load.atlas("plane", "../src/assets/plane.png", "../src/assets/plane.json");
+    this.load.json("sprites", "../src/assets/sprite-physics.json");
+    this.load.image("coin", "../src/assets/coin.png");
+    this.load.image("obstacle", "../src/assets/obstacle.png");
   }
 
   function createScene() {
     cloudsBlue = this.add.image(640, 360, "clouds-blue");
     cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
     cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
+
+    scoreText = this.add.text(
+      10, 10,
+      "SCORE: 0",
+      {
+        fontSize: 30,
+        color: "#000000",
+        fontStyle: "bold",
+        // backgroundColor: "#eeeeee",
+        // padding: (-100, 1)
+      }
+    );
 
     this.anims.create({
       key: "fly",
@@ -96,69 +104,84 @@
       }),
       repeat: 2
     });
-    this.anims.create({
-      key: "explode",
-      frameRate: 7,
-      frames: this.anims.generateFrameNumbers("explosion"),
-      repeat: 2
-    });
+
     var sprites = this.cache.json.get("sprites");
 
-    // plane = this.physics.add.sprite(100, 512, "plane");
-    plane = this.matter.add.sprite(100, 512, "plane", "plane-1.png", { shape: sprites.plane });
-    plane.setIgnoreGravity(true);
+    plane = this.physics.add.sprite(100, 512, "plane");
     plane.setDepth(1);
     plane.setScale(0.25);
+    plane.setData("score", 0);
     plane.play("fly");
 
     // coin = this.physics.add.sprite(500, 512, "coin");
-    coin = this.matter.add.sprite(500, 512, "coin", null, { shape: sprites.coin });
-    coin.setIgnoreGravity(true);
-    coin.setScale(0.15);
-    // coin.setCircle(250);
+    // coin.setScale(0.15);
 
-    // obstacle = this.physics.add.sprite(900, 512, "obstacle");
-    obstacle = this.matter.add.sprite(900, 512, "obstacle", null, { shape: sprites.obstacle });
-    obstacle.setIgnoreGravity(true);
+    coinGroup = this.physics.add.group({
+      defaultKey: "coin",
+      maxSize: 10,
+      visible: false,
+      active: false
+    })
+
+    obstacle = this.physics.add.sprite(900, 512, "obstacle");
     obstacle.setScale(0.3);
 
-    // this.physics.add.collider(plane, coin, function (plane, coin) {
-    //   coin.x = 1400;
-    //   // plane.play("explosion");
-    // });
+    this.time.addEvent({
+      delay: 1000,
+      loop: true,
+      callback: () => {
+        coinGroup.get(500, 512).setActive(true).setVisible(true).setScale(0.15);
+      }
+    })
 
-    // this.physics.add.collider(plane, obstacle, function (plane, obstacle) {
-    //   if (!isGameOver) {
-    //     plane.play("explosion");
-    //     plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-    //       plane.destroy();
-    //     });
-    //     isGameOver = true;
+    // this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+    //   if ((bodyA.label == "plane" && bodyB.label == "coin") || (bodyB.label == "plane" && bodyA.label == "coin")) {
+    //     coin.x = 1400;
+    //   } else if ((bodyA.label == "plane" && bodyB.label == "obstacle") || (bodyB.label == "plane" && bodyA.label == "obstacle")) {
+    //     if (!isGameOver) {
+    //       plane.play("explosion");
+    //       plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+    //         plane.destroy();
+    //       });
+    //       isGameOver = true;
+    //     }
     //   }
     // });
+
+    this.physics.add.collider(plane, coinGroup, function (plane, coin) {
+      // coin.x = 1400;
+      if (coin.active) {
+        coinGroup.killAndHide(coin);
+        let score = plane.getData("score");
+        score++;
+        plane.setData("score", score);
+        scoreText.setText("SCORE: " + score);
+      }
+    });
+
+    this.physics.add.collider(plane, obstacle, function (plane, obstacle) {
+      if (!isGameOver) {
+        plane.play("explosion");
+        plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+          plane.destroy();
+        });
+        isGameOver = true;
+      }
+    });
   }
 
   function updateScene() {
     cloudsWhite.tilePositionX += 0.5;
     cloudsWhiteSmall.tilePositionX += 0.25;
-    coin.x -= 4;
+    // coin.x -= 4;
+    coinGroup.incX(-4);
     obstacle.x -= 3;
 
-    // if (this.input.activePointer.isDown) {
-    //   isClicked = true;
-    // } else if (!this.input.activePointer.isDown && isClicked) {
-    //   isClicked = false;
-    //   var explosion = this.add.sprite(
-    //     this.input.activePointer.position.x,
-    //     this.input.activePointer.position.y,
-    //     "explosion"
-    //   );
-    //   explosion.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-    //     explosion.destroy();
-    //   });
-    //   explosion.setScale(0.2);
-    //   explosion.play("explode");
-    // }
+    coinGroup.getChildren().forEach(coin => {
+      if (coin.active && coin.x < 0) {
+        coinGroup.killAndHide(coin);
+      }
+    });
   }
 
 </script>
