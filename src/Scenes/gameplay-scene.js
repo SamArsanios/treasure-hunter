@@ -16,16 +16,23 @@ export default class GameplayScene extends Phaser.Scene {
         this.load.atlas("plane", "assets/plane.png", "assets/plane.json");
         this.load.image("coin", "assets/coin.png");
         this.load.image("obstacle", "assets/obstacle.png");
+        this.load.audio("ding", ["assets/ding.wav"]);
+        this.load.audio("explosion", ["assets/explosion.wav"]);
+        this.load.audio("gameMusic", ["assets/autumn.mp3"]);
     }
-
 
     create() {
         this.cloudsBlue = this.add.image(640, 360, "clouds-blue");
         this.cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
         this.cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
 
+        this.ding = this.sound.add("ding", { loop: false });
+        this.explosion = this.sound.add("explosion", { loop: false });
+        this.gameMusic = this.sound.add("gameMusic", { loop: true });
+        this.gameMusic.play();
+
         this.scoreText = this.add.text(
-            10, 10,
+            10, -170,
             "SCORE: 0",
             {
                 fontSize: 30,
@@ -35,6 +42,7 @@ export default class GameplayScene extends Phaser.Scene {
                 // padding: 0
             }
         );
+
         this.scoreText.setDepth(1);
 
         this.anims.create({
@@ -113,6 +121,7 @@ export default class GameplayScene extends Phaser.Scene {
         this.physics.add.collider(this.plane, this.coinGroup, function (plane, coin) {
             // coin.x = 1400;
             if (coin.active && plane.anims.getName() != "explosion") {
+                this.ding.play();
                 this.coinGroup.killAndHide(coin);
                 plane.incData("score", 1);
                 this.scoreText.setText("SCORE: " + plane.getData("score"));
@@ -122,10 +131,12 @@ export default class GameplayScene extends Phaser.Scene {
         //Physics Collider: Plane against Obstacle
         this.physics.add.collider(this.plane, this.obstacleGroup, function (plane, obstacle) {
             if (plane.anims.getName() != "explosion") {
+                this.explosion.play();
+                this.gameMusic.stop();
                 plane.play("explosion");
                 plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+                    this.scene.start("GameoverScene", { score: plane.getData("score") });
                     plane.destroy();
-                    this.scene.start("GameoverScene");
                 });
             }
         }, null, this);
