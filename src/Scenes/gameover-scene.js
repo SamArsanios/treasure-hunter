@@ -4,8 +4,8 @@ export default class GameoverScene extends Phaser.Scene {
 
     }
 
-    init() {
-
+    init(data) {
+        this.score = data.score;
     }
 
     preload() {
@@ -17,28 +17,29 @@ export default class GameoverScene extends Phaser.Scene {
             fontSize: 60,
             color: "#000",
             fontStyle: "bold",
-            backgroundColor: "#FFF",
             padding: 10
         }).setOrigin(0.5);
 
         this.add.text(
-            10, 10,
-            "SCORE: 0",
+            10, -170,
+            "SCORE: " + this.score,
             {
                 fontSize: 30,
                 color: "#000000",
                 fontStyle: "bold",
-                // backgroundColor: "#eeeeee",
-                // padding: 0
             }
         );
 
-        this.retryButton = this.add.text(1125, 475, "RETRY", {
+        this.retryButton = this.add.text(1125, 200, "RETRY", {
             fontSize: 40,
             color: "#000",
             fontStyle: "bold",
-            backgroundColor: "#FFF",
-            // padding: 10
         });
+
+        this.retryButton.setInteractive();
+
+        this.retryButton.on("pointerdown", () => {
+            this.scene.start("Game");
+        })
     }
 }
