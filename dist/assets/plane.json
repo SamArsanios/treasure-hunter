@@ -1,0 +1,188 @@
+{
+	"textures": [
+		{
+			"image": "plane.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2048,
+				"h": 1024
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "plane-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 511,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					}
+				},
+				{
+					"filename": "plane-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 511,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					},
+					"frame": {
+						"x": 511,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					}
+				},
+				{
+					"filename": "plane-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 511,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					},
+					"frame": {
+						"x": 1022,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					}
+				},
+				{
+					"filename": "plane-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 511,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					},
+					"frame": {
+						"x": 1533,
+						"y": 0,
+						"w": 511,
+						"h": 512
+					}
+				},
+				{
+					"filename": "smoke-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 512,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 512,
+						"h": 512
+					},
+					"frame": {
+						"x": 0,
+						"y": 512,
+						"w": 512,
+						"h": 512
+					}
+				},
+				{
+					"filename": "smoke-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 512,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 512,
+						"h": 512
+					},
+					"frame": {
+						"x": 512,
+						"y": 512,
+						"w": 512,
+						"h": 512
+					}
+				},
+				{
+					"filename": "smoke-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 512,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 512,
+						"h": 512
+					},
+					"frame": {
+						"x": 1024,
+						"y": 512,
+						"w": 512,
+						"h": 512
+					}
+				},
+				{
+					"filename": "smoke-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 512,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 512,
+						"h": 512
+					},
+					"frame": {
+						"x": 1536,
+						"y": 512,
+						"w": 512,
+						"h": 512
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:590bbc2f583c0f9a0725c336e86ce6fa:2a3fb4eed98e429a1299e1521f585b69:e7d815c4455bdad6de6ff1a8b57e9b20$"
+	}
+}
