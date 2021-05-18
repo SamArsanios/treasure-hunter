@@ -16,229 +16,228 @@
   <div id="game"></div>
   man
 </body>
-<!-- <script src="../src/gameplay-scene.js"></script> -->
+<script src="./main.js"></script>
 <script>
-  const phaserConfig = {
-    type: Phaser.AUTO,
-    parent: "game",
-    width: 1280,
-    height: 600,
-    backgroundColor: "#5DACD8",
-    physics: {
-      default: "arcade",
-      arcade: {
-        debug: false
-      }
-    },
-    scene: {
-      init: initScene,
-      preload: preloadScene,
-      create: createScene,
-      update: updateScene
-    }
-  };
-  // {
+  // const phaserConfig = {
+  //   type: Phaser.AUTO,
+  //   parent: "game",
+  //   width: 1280,
+  //   height: 600,
+  //   backgroundColor: "#5DACD8",
+  //   physics: {
+  //     default: "arcade",
+  //     arcade: {
+  //       debug: false
+  //     }
+  //   },
+  //   scene: {
   //     init: initScene,
   //     preload: preloadScene,
   //     create: createScene,
   //     update: updateScene
   //   }
-  const game = new Phaser.Game(phaserConfig)
+  // };
+  // // {
+  // //   init: initScene,
+  // //     preload: preloadScene,
+  // //       create: createScene,
+  // //         update: updateScene
+  // // }
+  // const game = new Phaser.Game(phaserConfig)
 
-  var cloudsBlue
-  var cloudsWhite;
-  var cloudsWhiteSmall;
-  var plane;
-  var coinGroup;
-  var obstacleGroup;
-  var scoreText;
-  var positionsY = [125, 300, 475];
-  var isCoinPoolItem = true;
+  // var cloudsBlue
+  // var cloudsWhite;
+  // var cloudsWhiteSmall;
+  // var plane;
+  // var coinGroup;
+  // var obstacleGroup;
+  // var scoreText;
+  // var positionsY = [125, 300, 475];
+  // var isCoinPoolItem = true;
 
-  function initScene() {
+  // function initScene() {
 
-  }
+  // }
 
-  function preloadScene() {
-    this.load.image("clouds-blue", "../src/assets/blue.png");
-    this.load.image("clouds-white", "../src/assets/white-clouds-1.png");
-    this.load.image("clouds-white-small", "../src/assets/white-clouds-small.png");
-    this.load.atlas("plane", "../src/assets/plane.png", "../src/assets/plane.json");
-    this.load.json("sprites", "../src/assets/sprite-physics.json");
-    this.load.image("coin", "../src/assets/coin.png");
-    this.load.image("obstacle", "../src/assets/obstacle.png");
-  }
+  // function preloadScene() {
+  //   this.load.image("clouds-blue", "../src/assets/blue.png");
+  //   this.load.image("clouds-white", "../src/assets/white-clouds-1.png");
+  //   this.load.image("clouds-white-small", "../src/assets/white-clouds-small.png");
+  //   this.load.atlas("plane", "../src/assets/plane.png", "../src/assets/plane.json");
+  //   this.load.json("sprites", "../src/assets/sprite-physics.json");
+  //   this.load.image("coin", "../src/assets/coin.png");
+  //   this.load.image("obstacle", "../src/assets/obstacle.png");
+  // }
 
-  function createScene() {
-    cloudsBlue = this.add.image(640, 360, "clouds-blue");
-    cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
-    cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
+  // function createScene() {
+  //   cloudsBlue = this.add.image(640, 360, "clouds-blue");
+  //   cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
+  //   cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
 
-    scoreText = this.add.text(
-      10, 10,
-      "SCORE: 0",
-      {
-        fontSize: 30,
-        color: "#000000",
-        fontStyle: "bold",
-        // backgroundColor: "#eeeeee",
-        // padding: (-100, 1)
-      }
-    );
-    scoreText.setDepth(1);
+  //   scoreText = this.add.text(
+  //     10, 10,
+  //     "SCORE: 0",
+  //     {
+  //       fontSize: 30,
+  //       color: "#000000",
+  //       fontStyle: "bold",
+  //       // backgroundColor: "#eeeeee",
+  //       // padding: (-100, 1)
+  //     }
+  //   );
+  //   scoreText.setDepth(1);
 
-    this.anims.create({
-      key: "fly",
-      frameRate: 7,
-      frames: this.anims.generateFrameNames("plane", {
-        prefix: "plane-",
-        suffix: ".png",
-        start: 1,
-        end: 4,
-        zeroPad: 1
-      }),
-      repeat: -1
-    });
-    this.anims.create({
-      key: "explosion",
-      frameRate: 7,
-      frames: this.anims.generateFrameNames("plane", {
-        prefix: "smoke-",
-        suffix: ".png",
-        start: 1,
-        end: 4,
-        zeroPad: 1
-      }),
-      repeat: 2
-    });
+  //   this.anims.create({
+  //     key: "fly",
+  //     frameRate: 7,
+  //     frames: this.anims.generateFrameNames("plane", {
+  //       prefix: "plane-",
+  //       suffix: ".png",
+  //       start: 1,
+  //       end: 4,
+  //       zeroPad: 1
+  //     }),
+  //     repeat: -1
+  //   });
+  //   this.anims.create({
+  //     key: "explosion",
+  //     frameRate: 7,
+  //     frames: this.anims.generateFrameNames("plane", {
+  //       prefix: "smoke-",
+  //       suffix: ".png",
+  //       start: 1,
+  //       end: 4,
+  //       zeroPad: 1
+  //     }),
+  //     repeat: 2
+  //   });
 
-    var sprites = this.cache.json.get("sprites");
+  //   var sprites = this.cache.json.get("sprites");
 
-    plane = this.physics.add.sprite(100, 300, "plane");
-    plane.setDepth(1);
-    plane.setScale(0.25);
-    plane.setData("score", 0);
-    plane.setData("position", 1);
-    plane.play("fly");
+  //   plane = this.physics.add.sprite(100, 300, "plane");
+  //   plane.setDepth(1);
+  //   plane.setScale(0.25);
+  //   plane.setData("score", 0);
+  //   plane.setData("position", 1);
+  //   plane.play("fly");
 
-    // coin = this.physics.add.sprite(500, 512, "coin");
-    // coin.setScale(0.15);
+  //   // coin = this.physics.add.sprite(500, 512, "coin");
+  //   // coin.setScale(0.15);
 
-    coinGroup = this.physics.add.group({
-      defaultKey: "coin",
-      maxSize: 10,
-      visible: false,
-      active: false
-    });
+  //   coinGroup = this.physics.add.group({
+  //     defaultKey: "coin",
+  //     maxSize: 10,
+  //     visible: false,
+  //     active: false
+  //   });
 
-    // obstacle = this.physics.add.sprite(900, 512, "obstacle");
-    // obstacle.setScale(0.3);
-
-
-    obstacleGroup = this.physics.add.group({
-      defaultKey: "obstacle",
-      maxSize: 10,
-      visible: false,
-      active: false
-    });
-
-    this.time.addEvent({
-      delay: 1000,
-      loop: true,
-      callback: () => {
-        let coinPosition = Math.floor(Math.random() * 3);
+  //   // obstacle = this.physics.add.sprite(900, 512, "obstacle");
+  //   // obstacle.setScale(0.3);
 
 
-        if (isCoinPoolItem) {
-          coinGroup.get(1300, positionsY[coinPosition])
-            .setActive(true)
-            .setVisible(true)
-            .setScale(0.15);
-        } else {
-          let obstacleCount = Math.floor(Math.random() * 2) + 1;
-          for (let i = 0; i < obstacleCount; i++) {
-            let obstaclePosition = Math.floor(Math.random() * 3);
-            obstacleGroup.get(1300, positionsY[obstaclePosition])
-              .setActive(true)
-              .setVisible(true)
-              .setScale(0.3);
-          }
-        }
-        isCoinPoolItem = !isCoinPoolItem
-      }
-    });
+  //   obstacleGroup = this.physics.add.group({
+  //     defaultKey: "obstacle",
+  //     maxSize: 10,
+  //     visible: false,
+  //     active: false
+  //   });
 
-    this.physics.add.collider(plane, coinGroup, function (plane, coin) {
-      // coin.x = 1400;
-      if (coin.active && plane.anims.getName() != "explosion") {
-        coinGroup.killAndHide(coin);
-        let score = plane.getData("score");
-        score++;
-        plane.setData("score", score);
-        scoreText.setText("SCORE: " + score);
-      }
-    });
+  //   this.time.addEvent({
+  //     delay: 1000,
+  //     loop: true,
+  //     callback: () => {
+  //       let coinPosition = Math.floor(Math.random() * 3);
 
-    this.physics.add.collider(plane, obstacleGroup, function (plane, obstacle) {
-      if (plane.anims.getName() != "explosion") {
-        plane.play("explosion");
-        plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-          plane.destroy();
-          this.scene.restart();
-        });
-      }
-    }, null, this);
-  }
 
-  function updateScene() {
-    cloudsWhite.tilePositionX += 0.5;
-    cloudsWhiteSmall.tilePositionX += 0.25;
-    // coin.x -= 4;
-    coinGroup.incX(-4);
-    // obstacle.x -= 3;
-    obstacleGroup.incX(-4);
+  //       if (isCoinPoolItem) {
+  //         coinGroup.get(1300, positionsY[coinPosition])
+  //           .setActive(true)
+  //           .setVisible(true)
+  //           .setScale(0.15);
+  //       } else {
+  //         let obstacleCount = Math.floor(Math.random() * 2) + 1;
+  //         for (let i = 0; i < obstacleCount; i++) {
+  //           let obstaclePosition = Math.floor(Math.random() * 3);
+  //           obstacleGroup.get(1300, positionsY[obstaclePosition])
+  //             .setActive(true)
+  //             .setVisible(true)
+  //             .setScale(0.3);
+  //         }
+  //       }
+  //       isCoinPoolItem = !isCoinPoolItem
+  //     }
+  //   });
 
-    coinGroup.getChildren().forEach(coin => {
-      if (coin.active && coin.x < 0) {
-        coinGroup.killAndHide(coin);
-      }
-    });
+  //   this.physics.add.collider(plane, coinGroup, function (plane, coin) {
+  //     // coin.x = 1400;
+  //     if (coin.active && plane.anims.getName() != "explosion") {
+  //       coinGroup.killAndHide(coin);
+  //       let score = plane.getData("score");
+  //       score++;
+  //       plane.setData("score", score);
+  //       scoreText.setText("SCORE: " + score);
+  //     }
+  //   });
 
-    obstacleGroup.getChildren().forEach(obstacle => {
-      if (obstacle.active && obstacle.x < 0) {
-        obstacleGroup.killAndHide(obstacle);
-      }
-    });
+  //   this.physics.add.collider(plane, obstacleGroup, function (plane, obstacle) {
+  //     if (plane.anims.getName() != "explosion") {
+  //       plane.play("explosion");
+  //       plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+  //         plane.destroy();
+  //         this.scene.restart();
+  //       });
+  //     }
+  //   }, null, this);
+  // }
 
-    if (this.input.activePointer.isDown) {
-      let position = this.input.activePointer.position;
-      let distancesY = positionsY.map(positionY => {
-        return Math.abs(positionY - position.y);
-      });
-      console.log(distancesY);
+  // function updateScene() {
+  //   cloudsWhite.tilePositionX += 0.5;
+  //   cloudsWhiteSmall.tilePositionX += 0.25;
+  //   // coin.x -= 4;
+  //   coinGroup.incX(-4);
+  //   // obstacle.x -= 3;
+  //   obstacleGroup.incX(-4);
 
-      let smallestArrayValue = function (array) {
-        let index = 0, value = 999999
-        for (let i = 0; i < array.length; i++) {
-          if (array[i] < value) {
-            value = array[i];
-            index = i
-          }
-        }
-        return index;
-      };
-      plane.setData("position", smallestArrayValue(distancesY));
-    }
+  //   coinGroup.getChildren().forEach(coin => {
+  //     if (coin.active && coin.x < 0) {
+  //       coinGroup.killAndHide(coin);
+  //     }
+  //   });
 
-    if (plane.y > positionsY[plane.getData("position")]) {
-      plane.y -= 6;
-    } else if (plane.y < positionsY[plane.getData("position")]) {
-      plane.y += 6;
-    }
-    if (Math.abs(plane.y - positionsY[plane.getData("position")]) <= 10) {
-      plane.y = positionsY[plane.getData("position")];
-    }
-  }
+  //   obstacleGroup.getChildren().forEach(obstacle => {
+  //     if (obstacle.active && obstacle.x < 0) {
+  //       obstacleGroup.killAndHide(obstacle);
+  //     }
+  //   });
+
+  //   if (this.input.activePointer.isDown) {
+  //     let position = this.input.activePointer.position;
+  //     let distancesY = positionsY.map(positionY => {
+  //       return Math.abs(positionY - position.y);
+  //     });
+
+  //     let smallestArrayValue = function (array) {
+  //       let index = 0, value = 999999
+  //       for (let i = 0; i < array.length; i++) {
+  //         if (array[i] < value) {
+  //           value = array[i];
+  //           index = i
+  //         }
+  //       }
+  //       return index;
+  //     };
+  //     plane.setData("position", smallestArrayValue(distancesY));
+  //   }
+
+  //   if (plane.y > positionsY[plane.getData("position")]) {
+  //     plane.y -= 6;
+  //   } else if (plane.y < positionsY[plane.getData("position")]) {
+  //     plane.y += 6;
+  //   }
+  //   if (Math.abs(plane.y - positionsY[plane.getData("position")]) <= 10) {
+  //     plane.y = positionsY[plane.getData("position")];
+  //   }
+  // }
 
 </script>
 
