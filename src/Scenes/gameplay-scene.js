@@ -1,9 +1,3 @@
-// var GameplayScene = new Phaser.Class({
-//     Extends: Phaser.Scene,
-//     initialize: function () {
-//         Phaser.Scene.call(this, { key: "GameplayScene" });
-//     },
-
 export default class GameplayScene extends Phaser.Scene {
     constructor() {
         super('Game');
@@ -20,7 +14,6 @@ export default class GameplayScene extends Phaser.Scene {
         this.load.image("clouds-white", "assets/white-clouds-1.png");
         this.load.image("clouds-white-small", "assets/white-clouds-small.png");
         this.load.atlas("plane", "assets/plane.png", "assets/plane.json");
-        // this.load.json("sprites", "./assets/sprite-physics.json");
         this.load.image("coin", "assets/coin.png");
         this.load.image("obstacle", "assets/obstacle.png");
     }
@@ -121,9 +114,6 @@ export default class GameplayScene extends Phaser.Scene {
             // coin.x = 1400;
             if (coin.active && plane.anims.getName() != "explosion") {
                 this.coinGroup.killAndHide(coin);
-                // let score = plane.getData("score");
-                // score++;
-                // plane.setData("score", score);
                 plane.incData("score", 1);
                 this.scoreText.setText("SCORE: " + plane.getData("score"));
             }
@@ -164,7 +154,6 @@ export default class GameplayScene extends Phaser.Scene {
             let distancesY = this.positionsY.map(positionY => {
                 return Math.abs(positionY - position.y);
             });
-            // console.log(distancesY);
 
             let smallestArrayValue = function (array) {
                 let index = 0, value = 999999
