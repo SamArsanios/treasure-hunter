@@ -1,11 +1,3 @@
-// var GameoverScene = new Phaser.Class({
-//     Extends: Phaser.Scene,
-//     initialize: function () {
-//         Phaser.Scene.call(this, { key: "GameoverScene" });
-//     },
-
-// });
-
 export default class GameoverScene extends Phaser.Scene {
     constructor() {
         super('GameoverScene');
