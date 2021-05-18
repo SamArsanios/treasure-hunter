@@ -20,7 +20,7 @@ export default {
             debug: false
         }
     },
-    scene: [ GameplayScene, GameoverScene]
+    scene: [BootScene, TitleScene, PreloaderScene, OptionsScene, CreditsScene, GameplayScene, GameoverScene]
 }
 
 // BootScene, TitleScene, PreloaderScene, OptionsScene, CreditsScene
