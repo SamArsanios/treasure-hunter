@@ -1,37 +1,34 @@
 
 ![Microverse](https://img.shields.io/badge/-Microverse-6F23FF?style=for-the-badge)
 
-# Weather App
-This is a simple weather application that shows the weather of different places in the world:
+# Treasure Hunter
+> This is a game where you play the role of an airplane and collect as many coins as possible without getting struck by the obstacles(lightning bolts).
 
 ![img](https://github.com/SamArsanios/weather-app/blob/weather-app/dist/images/screenshot.JPG)
 
 ## Built With
-![HTML](https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white)
-![JAVASCRIPT](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E")
+
+- Phaser 3 
+- JavaScript
+- LeaderBoard API
+- Jest
 
 ## Live Demo
-https://samarsanios.github.io/weather-app/
+[Live Demo Link](https://samarsanios.github.io/weather-app/)
 
-## Set Up 
-To get started open the directory where you will save this repo:
+## Getting Started
 
-```
-$ cd <directory>
-```
+To get a local copy up and running follow these simple steps.
 
-- Clone the repo typing:
+- Run `git clone git@github.com:SamArsanios/treasure-hunter.git` in your terminal to clone this repo.
+- `cd treasure-hunter`
+- Install the necesarry dependencies by running `npm install`.
+- Run `npm run start` to view the game in your default browser.
 
-```
-$ git clone git@github.com:SamArsanios/weather-app.git
-```
+To run the test
 
-- Install dependencies:
+- Run `npm test` to run the tests.
 
-```
-$ npm install
-```
 ## Author
 
 👤 **Samson**
@@ -51,3 +48,6 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - To Microverse for their `README` template.
+- To creators of [Paint3D](https://www.microsoft.com/en-us/p/paint-3d/9nblggh5fv99?activetab=pivot:overviewtab) that allowed me create 2D objects and images instantly.
+- To the creators of [Texture Packer](https://www.codeandweb.com/texturepacker) and [Physics Editor](https://www.codeandweb.com/physicseditor) for their great softwares that helped me create,edit and export all the spritesheets of the game.
+- To [OpenGameArt](https://opengameart.org/) for the background music used in the game.
