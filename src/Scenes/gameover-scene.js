@@ -37,7 +37,7 @@ export default class GameoverScene extends Phaser.Scene {
   //   scoreText.setOrigin(0.5, 0.5);
 
   create() {
-    this.add.text(640, 200, "GAME OVER", {
+    this.add.text(640, 170, "GAME OVER", {
       fontSize: 60,
       color: "#000",
       fontStyle: "bold",
