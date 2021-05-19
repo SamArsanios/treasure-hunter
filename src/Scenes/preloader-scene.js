@@ -21,7 +21,18 @@ export default class PreloaderScene extends Phaser.Scene {
 
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
-    console.log(height);
+
+    var gamenameText = this.make.text({
+      x: width / 2,
+      y: 100,
+      text: 'THE TREASURE HUNTER',
+      style: {
+        font: '40px monospace',
+        fill: '#ffffff'
+      }
+    });
+    gamenameText.setOrigin(0.5, 0.5);
+
     var loadingText = this.make.text({
       x: width / 2,
       y: 400,
@@ -35,7 +46,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     var percentText = this.make.text({
       x: width / 2,
-      y: height / 2 - 5,
+      y: height / 1.9,
       text: '0%',
       style: {
         font: '18px monospace',
