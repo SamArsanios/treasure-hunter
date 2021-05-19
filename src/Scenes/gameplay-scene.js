@@ -1,4 +1,5 @@
 import form from '../Objects/PlayerForm'
+import leaderboard from '../Module/leaderboard'
 
 export default class GameplayScene extends Phaser.Scene {
     constructor() {
@@ -138,6 +139,10 @@ export default class GameplayScene extends Phaser.Scene {
                 this.gameMusic.stop();
                 plane.play("explosion");
                 plane.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+                    const playerName = this.sys.game.globals.playerName;
+                    const finalScore = plane.getData("score");
+                    console.log(finalScore)
+                    leaderboard.saveScore(playerName, finalScore);
                     this.scene.start("GameoverScene", { score: plane.getData("score") });
                     plane.destroy();
                 });
