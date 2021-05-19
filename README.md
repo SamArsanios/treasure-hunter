@@ -6,6 +6,19 @@
 
 ![img](https://github.com/SamArsanios/weather-app/blob/weather-app/dist/images/screenshot.JPG)
 
+## Game Design and Instructions
+
+- For detailed information about the game please check the [Game Design File(GDD)](https://github.com/SamArsanios/treasure-hunter/blob/game/docs/game-design.txt)
+
+### Assets
+
+|Asset                                      |Description                            |
+|-------------------------------------------|---------------------------------------|
+|<img src="./dist/assets/blue.png" width="200">          |Gameplay Sky Background|
+|<img src="./dist/assets/plane.png" width="200"> |Plane and Explosion Spritesheet   |
+|<img src="./dist/assets/coin.png" width="80" >|Coin/Treasure that the plane can collect                       |
+|<img src="./dist/assets/obstacle.png" height="80" width="20">       |Obstacle that the player needs to avoid |
+
 ## Built With
 
 - Phaser 3 
