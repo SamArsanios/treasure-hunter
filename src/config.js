@@ -13,7 +13,7 @@ export default {
     parent: "game",
     width: 1280,
     height: 600,
-    // backgroundColor: "#5DACD8",
+    backgroundColor: "#5DACD8",
     physics: {
         default: "arcade",
         arcade: {
