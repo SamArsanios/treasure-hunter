@@ -38,8 +38,6 @@ export default class GameoverScene extends Phaser.Scene {
   //   scoreText.setOrigin(0.5, 0.5);
 
   create() {
-
-    leaderboard.displayScore(this);
     this.add.text(640, 170, "GAME OVER", {
       fontSize: 60,
       color: "#000",
