@@ -10,7 +10,6 @@ export default class TitleScene extends Phaser.Scene {
 
   preload() {
     this.add.image(400, 200, 'boot');
-    form.createForm(this);
   }
 
   create() {
@@ -24,10 +23,7 @@ export default class TitleScene extends Phaser.Scene {
     this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
 
     //Player Form
-    // form.createForm(this);
-    // console.log(form)
-    // form.showForm();
-    // console.log(form);
+    form.showForm();
 
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
