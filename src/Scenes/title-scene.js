@@ -2,7 +2,6 @@ import 'phaser';
 import config from '../config';
 import Button from '../Objects/Button';
 import form from '../Objects/PlayerForm'
-
 export default class TitleScene extends Phaser.Scene {
   constructor() {
     super('Title');
