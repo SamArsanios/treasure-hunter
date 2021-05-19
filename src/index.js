@@ -13,7 +13,7 @@ class Game extends Phaser.Game {
     constructor() {
         super(config);
         const model = new Model();
-        const playerName = 'Guest';
+        let playerName = 'Guest';
         this.globals = { model, playerName, bgMusic: null };
         // this.scene.add('Boot', BootScene);
         // this.scene.add('Preloader', PreloaderScene);
