@@ -1,5 +1,7 @@
 import 'phaser';
 import form from '../Objects/PlayerForm';
+import '../../dist/assets/css/styles.css';
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
@@ -91,7 +93,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-
     // load assets needed in our game
     this.load.image('blueButton1', 'assets/blue_button02.png');
     this.load.image('blueButton2', 'assets/blue_button03.png');
@@ -100,8 +101,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkedBox', 'assets/blue_boxCheckmark.png');
     this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
 
-    // form.createForm(this);
-    console.log(form)
+    form.createForm(this);
+
   }
 
 
