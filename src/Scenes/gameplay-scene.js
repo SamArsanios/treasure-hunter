@@ -102,7 +102,7 @@ export default class GameplayScene extends Phaser.Scene {
                     this.coinGroup.get(1300, this.positionsY[coinPosition])
                         .setActive(true)
                         .setVisible(true)
-                        .setScale(0.15);
+                        .setScale(0.1);
                 } else {
                     let obstacleCount = Math.floor(Math.random() * 2) + 1;
                     for (let i = 0; i < obstacleCount; i++) {
@@ -110,7 +110,7 @@ export default class GameplayScene extends Phaser.Scene {
                         this.obstacleGroup.get(1300, this.positionsY[obstaclePosition])
                             .setActive(true)
                             .setVisible(true)
-                            .setScale(0.3);
+                            .setScale(0.2);
                     }
                 }
                 this.isCoinPoolItem = !this.isCoinPoolItem
