@@ -11,19 +11,20 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     // add logo image
-    this.add.image(400, 200, 'logo');
+    // this.add.image(400, 200, 'boot');
 
     // display progress bar
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.fillRect(240, 270, 770, 50);
 
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
+    console.log(height);
     var loadingText = this.make.text({
       x: width / 2,
-      y: height / 2 - 50,
+      y: 400,
       text: 'Loading...',
       style: {
         font: '20px monospace',
@@ -97,6 +98,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 };
 
+//Phaser Part 1
 
 // import 'phaser';
 
