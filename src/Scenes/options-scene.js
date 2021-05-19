@@ -1,5 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
+import form from '../Objects/PlayerForm';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
@@ -7,6 +8,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
+    form.removeForm(this);
     this.model = this.sys.game.globals.model;
 
     this.text = this.add.text(400, -170, 'Options', { fontSize: 40 });

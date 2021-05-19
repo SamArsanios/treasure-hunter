@@ -27,7 +27,7 @@ const leaderboard = (() => {
         const scoreList = scores.result;
 
         for (let i = 0; i < scoreList.length; i++) {
-            scene.add.text(10, 30 * i - 100, `${scoreList[i].user} : ${scoreList[i].score}`)
+            scene.add.text(10, 30 * i - 120, `${scoreList[i].user} : ${scoreList[i].score}`)
         }
     }
 
