@@ -26,6 +26,7 @@ export default class GameplayScene extends Phaser.Scene {
 
     create() {
         form.removeForm(this);
+        this.sys.game.globals.bgMusic.stop();
         this.cloudsBlue = this.add.image(640, 360, "clouds-blue");
         this.cloudsWhite = this.add.tileSprite(640, 360, 1280, 720, "clouds-white");
         this.cloudsWhiteSmall = this.add.tileSprite(640, 360, 1280, 720, "clouds-white-small");
