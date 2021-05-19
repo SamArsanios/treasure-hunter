@@ -7,6 +7,10 @@ export default class TitleScene extends Phaser.Scene {
     super('Title');
   }
 
+  preload() {
+    this.add.image(400, 200, 'boot');
+  }
+
   create() {
     // Game
     this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
@@ -26,20 +30,24 @@ export default class TitleScene extends Phaser.Scene {
     }
   }
 
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
-    );
-  }
+  // centerButton(gameObject, offset = 0) {
+  //   Phaser.Display.Align.In.Center(
+  //     gameObject,
+  //     this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
+  //   );
+  // }
 
-  centerButtonText(gameText, gameButton) {
-    Phaser.Display.Align.In.Center(
-      gameText,
-      gameButton
-    );
-  }
+  // centerButtonText(gameText, gameButton) {
+  //   Phaser.Display.Align.In.Center(
+  //     gameText,
+  //     gameButton
+  //   );
+  // }
 };
+
+
+
+////////// Phaser Part 1
 
 // import 'phaser';
 
