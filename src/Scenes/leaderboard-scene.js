@@ -1,8 +1,9 @@
 import 'phaser';
 import form from '../Objects/PlayerForm'
 import leaderboard from '../Module/leaderboard'
+import Button from '../Objects/Button';
 
-export default class LeaderBoardScene extends Phaser.Scene {
+export default class LeaderboardScene extends Phaser.Scene {
     constructor() {
         super('Leaderboard')
     }
@@ -10,8 +11,8 @@ export default class LeaderBoardScene extends Phaser.Scene {
     create() {
         form.removeForm(this);
         leaderboard.displayScore(this);
-        this.add.text(640, 170, "GAME OVER", {
-            fontSize: 60,
+        this.add.text(640, 5, "Scoreboard", {
+            fontSize: 40,
             color: "#000",
             fontStyle: "bold",
             padding: 10
