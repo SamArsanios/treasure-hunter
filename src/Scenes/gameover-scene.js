@@ -1,3 +1,4 @@
+import leaderboard from '../Module/leaderboard'
 export default class GameoverScene extends Phaser.Scene {
   constructor() {
     super('GameoverScene');
@@ -37,6 +38,8 @@ export default class GameoverScene extends Phaser.Scene {
   //   scoreText.setOrigin(0.5, 0.5);
 
   create() {
+
+    leaderboard.displayScore(this);
     this.add.text(640, 170, "GAME OVER", {
       fontSize: 60,
       color: "#000",
@@ -64,6 +67,7 @@ export default class GameoverScene extends Phaser.Scene {
       color: "#000",
       fontStyle: "bold",
     });
+
 
     this.retryButton.setInteractive();
 
