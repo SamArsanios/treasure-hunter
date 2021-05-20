@@ -2,10 +2,10 @@
                                                                  +  Treasure Hunter  +
                                                                  +++++++++++++++++++++
 
-This is a game where you play the role of an aircraft and collect as many coins as possible without getting struck by the obstacles(lightning bolts).
+This is a game where you play the role of an aircraft and collect as many coins as possible avoiding the obstacles(lightning bolts).
 
 ++++ Movement ++++
-=> To play this game, the player has to move the aircraft upwards or downwards using a mouse click as it flies towards the right of the screen.
+=> To play this game, the player has to move the aircraft upwards or downwards using a mouse click or a screen tap on a touchscreen as it flies towards the right of the screen.
 => The coins and obstacles appear on random positions throughout the game.
 
 ++++ Scores ++++
@@ -13,8 +13,10 @@ This is a game where you play the role of an aircraft and collect as many coins 
 => Each coin is worth 1 point, so ensure to collect as much as you can to be the best of the best
 
 ++++ Game Over ++++
-The game ends when the plane hits an obstacle. The score which is the total number of coins collected by the plane are saved and 
-can be viewed in the scoreboard.
+=> The game ends when the plane hits an obstacle. 
+=> The score which is the total number of coins collected by the plane is saved and 
+can be viewed in the scoreboard. 
+=> The player is prompted to retry to play the game again.
 
 ++++ Future additions ++++
 In the future, I will try to add difficulty of the game by increasing its speed.
