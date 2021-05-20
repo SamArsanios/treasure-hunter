@@ -37,7 +37,7 @@ export default class GameplayScene extends Phaser.Scene {
     this.gameMusic.play();
 
     this.scoreText = this.add.text(
-      10, -170,
+      10, 10,
       'SCORE: 0',
       {
         fontSize: 30,
