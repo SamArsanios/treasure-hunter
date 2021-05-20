@@ -24,8 +24,8 @@ const form = (() => {
       submitForm(scene);
     };
 
-    form.appendChild(submit);
     form.appendChild(input);
+    form.appendChild(submit);
     body.appendChild(form);
   };
 
