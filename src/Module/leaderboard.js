@@ -8,7 +8,6 @@ const leaderboard = (() => {
   };
   const saveScore = async (name, score) => {
     const result = { user: name, score };
-    console.log(result);
     fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/eUhVLoaqyu6pliIQN9Ii/scores', {
       mode: 'cors',
       method: 'POST',
