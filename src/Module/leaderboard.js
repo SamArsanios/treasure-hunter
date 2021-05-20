@@ -1,10 +1,11 @@
 import 'regenerator-runtime/runtime';
+
 const leaderboard = (() => {
   const compare = (a, b) => {
     if (a.score > b.score) return -1;
     if (a.score < b.score) return 1;
     return 0;
-  }
+  };
   const saveScore = async (name, score) => {
     const result = { user: name, score };
     console.log(result);

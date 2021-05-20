@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
-import Button from '../Objects/Button'
+import Button from '../Objects/Button';
+
 export default class GameoverScene extends Phaser.Scene {
   constructor() {
     super('GameoverScene');
