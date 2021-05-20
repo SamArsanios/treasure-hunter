@@ -8,7 +8,19 @@
 
 ## Game Design and Instructions
 
-- For detailed information about the game please check the [Game Design File(GDD)](https://github.com/SamArsanios/treasure-hunter/blob/game/docs/game-design.txt)
+- Play as a plane collecting coins and avoiding obstacles.
+- Collect gold coins to increase your score.
+- The only way to survive is to avoid crashing to the obstacles(lightning bolts) to not lose the game.
+
+### Game Controls
+
+To control the plane, do a mouse click or tap on the screen if you are using a touchscreen device.
+
+- Click/Tap up to move the plane upwards.
+- Click/Tap in the middle to move plane to the center.
+- Click/Tap down to move the plane downwards.
+
+For detailed information about the game please check the [Game Design File(GDD)](https://github.com/SamArsanios/treasure-hunter/blob/game/docs/game-design.txt)
 
 ### Assets
 
