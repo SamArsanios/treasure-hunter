@@ -20,9 +20,6 @@ describe('GamePlayScene', () => {
     expect(typeof GameplayScene).not.toBe('undefined');
   });
 
-  test('Plane is a subclass of sprite', () => {
-    expect(GameplayScene instanceof Phaser.Physics.Arcade.Sprite).toBe(false);
-  });
   // test('Returns smallest Value', () => {
   //   const array = [5, 6, 7]
   //   const value = GameplayScene.update.smallestArrayValue(array);
