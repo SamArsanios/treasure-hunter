@@ -121,8 +121,7 @@ export default class GameplayScene extends Phaser.Scene {
     });
 
     // Physics Collider: Plane against Coin
-    this.physics.add.collider(this.plane, this.coinGroup, function (plane, coin) {
-      // coin.x = 1400;
+    this.physics.add.collider(this.plane, this.coinGroup, (plane, coin) => {
       if (coin.active && plane.anims.getName() !== 'explosion') {
         this.ding.play();
         this.coinGroup.killAndHide(coin);
@@ -171,7 +170,7 @@ export default class GameplayScene extends Phaser.Scene {
       const { position } = this.input.activePointer;
       const distancesY = this.positionsY.map((positionY) => Math.abs(positionY - position.y));
 
-      const smallestArrayValue = function (array) {
+      const smallestArrayValue = (array) => {
         let index = 0; let
           value = 999999;
         for (let i = 0; i < array.length; i += 1) {
