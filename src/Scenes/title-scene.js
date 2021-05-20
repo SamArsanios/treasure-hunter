@@ -36,40 +36,4 @@ export default class TitleScene extends Phaser.Scene {
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
   }
-
-  // centerButtonText(gameText, gameButton) {
-  //   Phaser.Display.Align.In.Center(
-  //     gameText,
-  //     gameButton
-  //   );
-  // }
 }
-
-/// /////// Phaser Part 1
-
-// import 'phaser';
-
-// export default class TitleScene extends Phaser.Scene {
-//   constructor() {
-//     super('Title');
-//   }
-
-//   preload() {
-//     let width = this.cameras.main.width;
-//     let height = this.cameras.main.height;
-//     var assetText = this.make.text({
-//       x: width / 2,
-//       y: height / 2 + 50,
-//       text: 'Title Scene',
-//       style: {
-//         font: '18px monospace',
-//         fill: '#ffffff'
-//       }
-//     });
-//     assetText.setOrigin(0.5, 0.5);
-//   }
-
-//   create() {
-//     this.scene.start('Game');
-//   }
-// };

@@ -43,8 +43,6 @@ export default class GameplayScene extends Phaser.Scene {
         fontSize: 30,
         color: '#000000',
         fontStyle: 'bold',
-        // backgroundColor: "#eeeeee",
-        // padding: 0
       },
     );
 
@@ -154,7 +152,7 @@ export default class GameplayScene extends Phaser.Scene {
   update() {
     this.cloudsWhite.tilePositionX += 0.5;
     this.cloudsWhiteSmall.tilePositionX += 0.25;
-    this.coinGroup.incX(-4);// coin.x -= 4;
+    this.coinGroup.incX(-4);
     this.obstacleGroup.incX(-4);
 
     this.coinGroup.getChildren().forEach((coin) => {

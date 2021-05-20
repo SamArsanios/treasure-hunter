@@ -24,7 +24,6 @@ const leaderboard = (() => {
 
   const displayScore = async (scene) => {
     const scores = await receiveScore();
-    // console.log(scores);
     const scoreList = scores.result;
 
     for (let i = 0; i < scoreList.length; i += 1) {
