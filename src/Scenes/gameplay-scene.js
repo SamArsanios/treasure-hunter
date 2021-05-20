@@ -1,3 +1,4 @@
+import 'phaser';
 import form from '../Objects/PlayerForm'
 import leaderboard from '../Module/leaderboard'
 
