@@ -22,6 +22,11 @@
     "url": "https://github.com/SamArsanios/treasure-hunter/issues"
   },
   "homepage": "https://github.com/SamArsanios/treasure-hunter#readme",
+  "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
