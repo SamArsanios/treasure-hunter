@@ -1,6 +1,10 @@
 import BootScene from '../Scenes/boot-scene';
 
 describe('Boot', () => {
+  test('Game has a constructor', () => {
+    expect(BootScene.prototype.constructor).not.toBe(false);
+  });
+
   test('Scene is created correctly', () => {
     const scene = new BootScene({
       active: true,
