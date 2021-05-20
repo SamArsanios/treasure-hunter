@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import form from '../Objects/PlayerForm';
 import '../../dist/assets/css/styles.css';
 
@@ -70,7 +70,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // update progress bar
     this.load.on('progress', (value) => {
-      percentText.setText(`${parseInt(value * 100)}%`);
+      percentText.setText(`${parseInt(value * 100)}%`); // eslint-disable-line
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);

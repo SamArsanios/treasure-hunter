@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import form from '../Objects/PlayerForm';
 import leaderboard from '../Module/leaderboard';
 import Button from '../Objects/Button';

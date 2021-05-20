@@ -1,5 +1,5 @@
-import 'phaser';
-import config from '../config';
+import Phaser from 'phaser';
+import config from '../config';// eslint-disable-line
 import form from '../Objects/PlayerForm';
 
 export default class CreditsScene extends Phaser.Scene {
@@ -32,7 +32,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 3000,
       delay: 1000,
       onComplete() {
-        this.destroy;
+        this.destroy;// eslint-disable-line
       },
     });
 
@@ -43,7 +43,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 8000,
       delay: 1000,
       onComplete: function () {
-        this.madeByTween.destroy;
+        this.madeByTween.destroy;// eslint-disable-line
         this.scene.start('Title');
       }.bind(this),
     });

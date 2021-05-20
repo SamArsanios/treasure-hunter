@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import form from '../Objects/PlayerForm';
 import leaderboard from '../Module/leaderboard';
 
@@ -125,7 +125,7 @@ export default class GameplayScene extends Phaser.Scene {
     // Physics Collider: Plane against Coin
     this.physics.add.collider(this.plane, this.coinGroup, function (plane, coin) {
       // coin.x = 1400;
-      if (coin.active && plane.anims.getName() != 'explosion') {
+      if (coin.active && plane.anims.getName() !== 'explosion') {
         this.ding.play();
         this.coinGroup.killAndHide(coin);
         plane.incData('score', 1);
@@ -134,8 +134,8 @@ export default class GameplayScene extends Phaser.Scene {
     }, null, this);
 
     // Physics Collider: Plane against Obstacle
-    this.physics.add.collider(this.plane, this.obstacleGroup, function (plane, obstacle) {
-      if (plane.anims.getName() != 'explosion') {
+    this.physics.add.collider(this.plane, this.obstacleGroup, (plane) => {
+      if (plane.anims.getName() !== 'explosion') {
         this.explosion.play();
         this.gameMusic.stop();
         plane.play('explosion');
@@ -176,7 +176,7 @@ export default class GameplayScene extends Phaser.Scene {
       const smallestArrayValue = function (array) {
         let index = 0; let
           value = 999999;
-        for (let i = 0; i < array.length; i++) {
+        for (let i = 0; i < array.length; i += 1) {
           if (array[i] < value) {
             value = array[i];
             index = i;

@@ -1,4 +1,4 @@
-import leaderboard from '../Module/leaderboard';
+import Phaser from 'phaser';
 
 export default class GameoverScene extends Phaser.Scene {
   constructor() {

@@ -1,5 +1,5 @@
-import 'phaser';
-import config from '../config';
+import Phaser from 'phaser';
+import config from '../config';// eslint-disable-line
 import Button from '../Objects/Button';
 import form from '../Objects/PlayerForm';
 
