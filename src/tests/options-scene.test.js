@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import OptionsScene from '../Scenes/options-scene';
 
 describe('Options', () => {

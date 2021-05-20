@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import BootScene from '../Scenes/boot-scene';
 
 describe('Boot', () => {
