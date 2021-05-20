@@ -28,7 +28,7 @@ const leaderboard = (() => {
     const scoreList = scores.result;
 
     for (let i = 0; i < scoreList.length; i += 1) {
-      scene.add.text(590, 25 * i - 5, `${scoreList[i].user} : ${scoreList[i].score}`, { fontSize: 20 });
+      scene.add.text(590, 24 * i + 17, `${scoreList[i].user} : ${scoreList[i].score}`, { fontSize: 20 });
     }
   };
 
