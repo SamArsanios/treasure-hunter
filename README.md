@@ -4,7 +4,7 @@
 # Treasure Hunter
 > This is a game where you play the role of an airplane and collect as many coins as possible without getting struck by the obstacles(lightning bolts).
 
-![img](https://github.com/SamArsanios/weather-app/blob/weather-app/dist/images/screenshot.JPG)
+![img](https://github.com/SamArsanios/treasure-hunter/blob/game/dist/assets/screenshot-1.JPG)
 
 ## Game Design and Instructions
 
