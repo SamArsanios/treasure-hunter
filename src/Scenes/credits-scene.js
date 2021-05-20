@@ -1,6 +1,7 @@
 import 'phaser';
 import config from '../config';
 import form from '../Objects/PlayerForm';
+
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
     super('Credits');
@@ -14,12 +15,12 @@ export default class CreditsScene extends Phaser.Scene {
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.madeByText,
-      this.zone
+      this.zone,
     );
 
     this.madeByText.setY(1000);
@@ -30,9 +31,9 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 1000,
-      onComplete: function () {
+      onComplete() {
         this.destroy;
-      }
+      },
     });
 
     this.madeByTween = this.tweens.add({
@@ -44,7 +45,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: function () {
         this.madeByTween.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
   }
-};
+}

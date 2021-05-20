@@ -1,8 +1,8 @@
-import leaderboard from '../Module/leaderboard'
+import leaderboard from '../Module/leaderboard';
+
 export default class GameoverScene extends Phaser.Scene {
   constructor() {
     super('GameoverScene');
-
   }
 
   init(data) {
@@ -38,21 +38,21 @@ export default class GameoverScene extends Phaser.Scene {
   //   scoreText.setOrigin(0.5, 0.5);
 
   create() {
-    this.add.text(640, 170, "GAME OVER", {
+    this.add.text(640, 170, 'GAME OVER', {
       fontSize: 60,
-      color: "#000",
-      fontStyle: "bold",
-      padding: 10
+      color: '#000',
+      fontStyle: 'bold',
+      padding: 10,
     }).setOrigin(0.5);
 
     this.add.text(
       560, -100,
-      "SCORE: " + this.score,
+      `SCORE: ${this.score}`,
       {
         fontSize: 45,
-        color: "#000000",
-        fontStyle: "bold",
-      }
+        color: '#000000',
+        fontStyle: 'bold',
+      },
     );
 
     // this.retryButton = this.make.text(640, 200, "RETRY", {
@@ -60,17 +60,16 @@ export default class GameoverScene extends Phaser.Scene {
     //   color: "#000",
     //   fontStyle: "bold",
     // });
-    this.retryButton = this.add.text(580, 170, "RETRY", {
+    this.retryButton = this.add.text(580, 170, 'RETRY', {
       fontSize: 45,
-      color: "#000",
-      fontStyle: "bold",
+      color: '#000',
+      fontStyle: 'bold',
     });
-
 
     this.retryButton.setInteractive();
 
-    this.retryButton.on("pointerdown", () => {
-      this.scene.start("Game");
+    this.retryButton.on('pointerdown', () => {
+      this.scene.start('Game');
     });
   }
 }

@@ -1,7 +1,8 @@
 import 'phaser';
 import config from '../config';
 import Button from '../Objects/Button';
-import form from '../Objects/PlayerForm'
+import form from '../Objects/PlayerForm';
+
 export default class TitleScene extends Phaser.Scene {
   constructor() {
     super('Title');
@@ -18,13 +19,13 @@ export default class TitleScene extends Phaser.Scene {
     // Options
     this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
 
-    // LeaderBoard 
+    // LeaderBoard
     this.leaderboardButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Scoreboard', 'Leaderboard');
 
     // Credits
     this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 200, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
 
-    //Player Form
+    // Player Form
     form.showForm();
 
     this.model = this.sys.game.globals.model;
@@ -36,24 +37,15 @@ export default class TitleScene extends Phaser.Scene {
     }
   }
 
-  // centerButton(gameObject, offset = 0) {
-  //   Phaser.Display.Align.In.Center(
-  //     gameObject,
-  //     this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
-  //   );
-  // }
-
   // centerButtonText(gameText, gameButton) {
   //   Phaser.Display.Align.In.Center(
   //     gameText,
   //     gameButton
   //   );
   // }
-};
+}
 
-
-
-////////// Phaser Part 1
+/// /////// Phaser Part 1
 
 // import 'phaser';
 
