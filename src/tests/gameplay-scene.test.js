@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import GameplayScene from '../Scenes/gameplay-scene';
 
 describe('GamePlayScene', () => {
@@ -19,10 +18,6 @@ describe('GamePlayScene', () => {
 
   test('GameScene to not be undefined', () => {
     expect(typeof GameplayScene).not.toBe('undefined');
-  });
-
-  test('Game scene is a subclass of Scene', () => {
-    expect(GameplayScene.prototype instanceof Phaser.Scene).toBe(true);
   });
 
   test('Plane is a subclass of sprite', () => {

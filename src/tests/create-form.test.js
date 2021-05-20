@@ -11,10 +11,6 @@ const scene = {
 };
 
 describe('Helpers for scenes', () => {
-    // test('createForm generates the form', () => {
-    //     expect(document.querySelector('body').children.length).toBe(1);
-    // });
-
     test('form is correctly built', () => {
         form.createForm(scene);
         const forms = document.querySelector('form')

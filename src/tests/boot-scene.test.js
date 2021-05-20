@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import BootScene from '../Scenes/boot-scene';
 
 describe('Boot', () => {
@@ -15,10 +14,6 @@ describe('Boot', () => {
 
   test('BootScene to be a function', () => {
     expect(typeof BootScene).toBe('function');
-  });
-
-  test('BootScene scene is a subclass of scene', () => {
-    expect(BootScene.prototype instanceof Phaser.Scene).toBe(true);
   });
 
   test('BootScene to not be undefined', () => {

@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import OptionsScene from '../Scenes/options-scene';
 
 describe('Options', () => {
@@ -15,10 +14,6 @@ describe('Options', () => {
 
   test('OptionsScene to be a function', () => {
     expect(typeof OptionsScene).toBe('function');
-  });
-
-  test('OptionsScene scene is a subclass of scene', () => {
-    expect(OptionsScene.prototype instanceof Phaser.Scene).toBe(true);
   });
 
   test('OptionsScene to not be undefined', () => {
