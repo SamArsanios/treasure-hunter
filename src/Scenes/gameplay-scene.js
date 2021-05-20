@@ -171,8 +171,8 @@ export default class GameplayScene extends Phaser.Scene {
       const distancesY = this.positionsY.map((positionY) => Math.abs(positionY - position.y));
 
       const smallestArrayValue = (array) => {
-        let index = 0; let
-          value = 999999;
+        let index = 0;
+        let value = 999999;
         for (let i = 0; i < array.length; i += 1) {
           if (array[i] < value) {
             value = array[i];
