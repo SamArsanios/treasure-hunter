@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 const leaderboard = (() => {
 
     const saveScore = async (name, score) => {
