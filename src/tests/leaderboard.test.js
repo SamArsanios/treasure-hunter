@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import leaderboard from '../Module/leaderboard';
 import LeaderboardScene from '../Scenes/leaderboard-scene';
 import 'regenerator-runtime/runtime';
@@ -31,6 +32,10 @@ describe('Leaderboard', () => {
 
   test('Leaderboard scene is a function', () => {
     expect(typeof LeaderboardScene).toBe('function');
+  });
+
+  test('Leaderboard scene is a subclass of scene', () => {
+    expect(LeaderboardScene.prototype instanceof Phaser.Scene).toBe(true);
   });
 
   test('Leaderboard to not be undefined', () => {

@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import GameplayScene from '../Scenes/gameplay-scene';
 
 describe('GamePlayScene', () => {
@@ -20,6 +21,13 @@ describe('GamePlayScene', () => {
     expect(typeof GameplayScene).not.toBe('undefined');
   });
 
+  test('Game scene is a subclass of Scene', () => {
+    expect(GameplayScene.prototype instanceof Phaser.Scene).toBe(true);
+  });
+
+  test('Plane is a subclass of sprite', () => {
+    expect(GameplayScene instanceof Phaser.Physics.Arcade.Sprite).toBe(false);
+  });
   // test('Returns smallest Value', () => {
   //   const array = [5, 6, 7]
   //   const value = GameplayScene.update.smallestArrayValue(array);
