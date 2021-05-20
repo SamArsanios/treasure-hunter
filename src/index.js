@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import config from './config';
-import Model from './Model';
+import Model from './Objects/Model';
 
 class Game extends Phaser.Game {
   constructor() {

@@ -16,6 +16,10 @@ describe('Options', () => {
     expect(typeof OptionsScene).toBe('function');
   });
 
+  test('OptionsScene scene is a subclass of scene', () => {
+    expect(OptionsScene.prototype instanceof Phaser.Scene).toBe(true);
+  });
+
   test('OptionsScene to not be undefined', () => {
     expect(typeof OptionsScene).not.toBe('undefined');
   });

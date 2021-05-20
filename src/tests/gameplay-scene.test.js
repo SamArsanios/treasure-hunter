@@ -13,7 +13,7 @@ describe('GamePlayScene', () => {
     expect(scene.sys.config).toBe('Game');
   });
 
-  test('Gamescene to be a funtion', () => {
+  test('GamePlayscene to be a funtion', () => {
     expect(typeof GameplayScene).toBe('function');
   });
 
