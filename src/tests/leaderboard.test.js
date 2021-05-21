@@ -42,8 +42,31 @@ describe('Leaderboard', () => {
     expect(typeof LeaderboardScene).not.toBe('undefined');
   });
 
+  test('saves the score and playerName to the leaderBoard', () => {
+    leaderboard.saveScore('runner', 1000).then((score) => expect(score.result).toBe('Leaderboard score created correctly.'));
+  });
+
   test('Receives/Loads the scores', async () => {
     const scores = await leaderboard.receiveScore();
     expect(scores.result).toBeTruthy();
+  });
+
+  test('get score and playerName from the leaderBoard', () => {
+    leaderboard.receiveScore().then((scores) => expect(typeof scores).toEqual('object'));
+  });
+
+  test('Ranking contains the Player', () => {
+    leaderboard.receiveScore()
+      .then((data) => {
+        expect(data).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              score: 1000,
+              user: 'runner',
+            }),
+          ]),
+        );
+      })
+      .catch(() => { });
   });
 });
