@@ -19,7 +19,7 @@ const leaderboard = (() => {
     }).then((response) => { response.json(); }).then((response) => { console.log(response); });
   };
 
-  //Load Score or Fetch Score from API
+  // Load Score or Fetch Score from API
   const receiveScore = async () => {
     const scores = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/eUhVLoaqyu6pliIQN9Ii/scores', {
       mode: 'cors',
@@ -27,7 +27,7 @@ const leaderboard = (() => {
     return scores.json();
   };
 
-  //Display received Store to User
+  // Display received Store to User
   const displayScore = async (scene) => {
     const scores = await receiveScore();
     const scoreList = scores.result;
