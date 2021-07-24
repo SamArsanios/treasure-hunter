@@ -39,7 +39,7 @@ For detailed information about the game please check the [Game Design File(GDD)]
 - Jest
 
 ## Live Demo
-[Live Demo Link](https://peaceful-tereshkova-883d6e.netlify.app/)
+[Project Demo Link](https://peaceful-tereshkova-883d6e.netlify.app/)
 
 ## Getting Started
 
