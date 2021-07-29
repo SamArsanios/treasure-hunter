@@ -10,7 +10,7 @@ This is a game where you play the role of an aircraft and collect as many coins 
 
 ++++ Scores ++++
 => A player collects points as he collects the coins and dodges the obstacles that appear from the right side of the screen. 
-=> Each coin is worth 1 point, so ensure to collect as much as you can to be the best of the best
+=> Each coin is worth 1 point, so ensure to collect as much as you can to be the best of the best.
 
 ++++ Game Over ++++
 => The game ends when the plane hits an obstacle. 
