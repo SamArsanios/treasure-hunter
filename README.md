@@ -60,7 +60,7 @@ To run the test
 
 - Github: [@SamArsanios](https://github.com/SamArsanios)
 - Twitter: [@SamArsanios](https://twitter.com/SamArsanios)
-- Linkedin: [@Samson](https://www.linkedin.com/in/samson-kibrom/)
+- LinkedIn: [@Samson](https://www.linkedin.com/in/samson-kibrom/)
 
 ## 🤝 Contributing
 
