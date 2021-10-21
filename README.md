@@ -20,7 +20,7 @@ To control the plane, do a mouse click or tap on the screen if you are using a t
 - Click/Tap in the middle to move plane to the center.
 - Click/Tap down to move the plane downwards.
 
-For detailed information about the game please check the [Game Design File(GDD)](https://github.com/SamArsanios/treasure-hunter/blob/game/docs/game-design.txt)
+For detailed information about the game please check the [Game Design File(GDD)](https://github.com/SamArsanios/treasure-hunter/blob/game/docs/game-design.txt).
 
 ### Assets
 
